@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+require __DIR__ . '/../vendor/autoload.php';
 
-require_once '../Transaction.php';
+use App\PaymentGateway\Paddle\Transaction;
 
-$class = 'Transaction';
+$paddleTransaction = new Transaction();
 
-$amount = (new $class(100, 'Transaction 1'))
-    ->addTax(8)
-    ->applyDiscount(10)
-    ->getAmount();
+$id = new \Ramsey\Uuid\UuidFactory();
 
-var_dump($amount);
+echo $id->uuid4();
+
+var_dump($paddleTransaction);
